@@ -50,6 +50,7 @@ public class Student extends UnicastRemoteObject implements IUser {
 
   @Override
   public void notifyAvailability(IBike bike) throws RemoteException {
+    Objects.requireNonNull(bike);
     System.out.println("New location by " + this);
   }
 }

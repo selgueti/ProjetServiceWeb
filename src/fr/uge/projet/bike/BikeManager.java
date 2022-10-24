@@ -81,6 +81,7 @@ public class BikeManager extends UnicastRemoteObject implements IBikeManager {
 
   @Override
   public String[] lookComment(UUID id) throws RemoteException {
+    Objects.requireNonNull(id);
     synchronized (bikeById) {
       if (!bikeById.containsKey(id)) {
         return null;

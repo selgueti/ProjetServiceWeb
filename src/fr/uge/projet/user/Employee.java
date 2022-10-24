@@ -14,9 +14,9 @@ public class Employee extends UnicastRemoteObject implements IUser {
 
   public Employee(UUID id, String lastName, String firstName) throws RemoteException {
     super();
-    this.id = id;
-    this.lastName = lastName;
-    this.firstName = firstName;
+    Objects.requireNonNull(this.id = id);
+    Objects.requireNonNull(this.lastName = lastName);
+    Objects.requireNonNull(this.firstName = firstName);
   }
 
   @Override
@@ -50,6 +50,7 @@ public class Employee extends UnicastRemoteObject implements IUser {
 
   @Override
   public void notifyAvailability(IBike bike) throws RemoteException {
+    Objects.requireNonNull(bike);
     System.out.println("New location by " + this);
   }
 }

@@ -25,9 +25,9 @@ public class Bike extends UnicastRemoteObject implements IBike {
 
   public Bike(UUID id, IUser owner, State state) throws RemoteException {
     super();
-    this.id = id;
-    this.owner = owner;
-    this.state = state;
+    Objects.requireNonNull(this.id = id);
+    Objects.requireNonNull(this.owner = owner);
+    Objects.requireNonNull(this.state = state);
   }
 
   @Override
