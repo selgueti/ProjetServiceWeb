@@ -1,5 +1,7 @@
 package fr.uge.projet.bike;
 
+import fr.uge.projet.bike.location.IBikeManager;
+
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.RemoteException;

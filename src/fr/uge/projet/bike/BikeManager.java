@@ -89,4 +89,19 @@ public class BikeManager extends UnicastRemoteObject implements IBikeManager {
       return bikeById.get(id).getComment();
     }
   }
+
+  @Override
+  public IBike buyBike(IUser user, UUID idBike) throws RemoteException {
+    Objects.requireNonNull(user);
+    Objects.requireNonNull(idBike);
+
+    synchronized (bikeById) {
+      var bike = bikeById.get(idBike);
+
+      if (null == bike || !bike.isAvailable())
+        return null;
+
+      return bikeById.remove(idBike);
+    }
+  }
 }

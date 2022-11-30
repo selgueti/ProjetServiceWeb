@@ -3,8 +3,8 @@ package fr.uge.projet.user;
 import static fr.uge.projet.user.User.EMPLOYEE;
 import static fr.uge.projet.user.User.STUDENT;
 
-import fr.uge.projet.bike.IBike;
-import fr.uge.projet.bike.IBikeManager;
+import fr.uge.projet.bike.location.IBike;
+import fr.uge.projet.bike.location.IBikeManager;
 import fr.uge.projet.bike.State;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
