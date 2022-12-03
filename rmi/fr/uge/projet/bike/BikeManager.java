@@ -20,7 +20,7 @@ public class BikeManager extends UnicastRemoteObject implements IBikeManager {
   }
 
   @Override
-  public UUID addBike(IUser owner, State state) throws RemoteException {
+  public UUID addBike(IUser owner, State state, long price) throws RemoteException {
     Objects.requireNonNull(owner);
     Objects.requireNonNull(state);
     var id = UUID.randomUUID();
@@ -28,7 +28,7 @@ public class BikeManager extends UnicastRemoteObject implements IBikeManager {
       while (bikeById.containsKey(id)) {
         id = UUID.randomUUID();
       }
-      bikeById.put(id, new Bike(id, owner, state));
+      bikeById.put(id, new Bike(id, owner, state, price));
     }
     return id;
   }
@@ -91,14 +91,14 @@ public class BikeManager extends UnicastRemoteObject implements IBikeManager {
   }
 
   @Override
-  public IBike buyBike(IUser user, UUID idBike) throws RemoteException {
+  public IBike buyBike(IUser user, UUID idBike, long amount) throws RemoteException {
     Objects.requireNonNull(user);
     Objects.requireNonNull(idBike);
 
     synchronized (bikeById) {
       var bike = bikeById.get(idBike);
 
-      if (null == bike || !bike.isAvailable())
+      if (null == bike || !bike.isAvailable() || bike.getPrice() != amount)
         return null;
 
       return bikeById.remove(idBike);

@@ -1,6 +1,5 @@
 package fr.uge.projet.bike.sell;
 
-import fr.uge.projet.bike.State;
 import fr.uge.projet.user.IUser;
 
 import java.rmi.Remote;
@@ -9,12 +8,10 @@ import java.util.UUID;
 
 public interface IBikeManager extends Remote {
 
-  UUID addBike(IUser user, State state) throws RemoteException;
-
   IBike[] getAll() throws RemoteException;
 
   String[] lookComment(UUID id) throws RemoteException;
 
-  IBike buyBike(IUser user, UUID idBike) throws RemoteException;
+  IBike buyBike(IUser user, UUID idBike, long amount) throws RemoteException;
 
 }

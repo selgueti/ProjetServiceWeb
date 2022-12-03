@@ -6,8 +6,8 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.UUID;
 
-public interface IBikeManager extends Remote, fr.uge.projet.bike.location.IBikeManager, fr.uge.projet.bike.sell.IBikeManager {
-    UUID addBike(IUser user, State state) throws RemoteException;
+public interface IBikeManager extends Remote, fr.uge.projet.bike.lease.IBikeManager, fr.uge.projet.bike.sell.IBikeManager {
+    UUID addBike(IUser user, State state, long price) throws RemoteException;
 
     boolean registerOnWaitingList(IUser user, UUID idBike) throws RemoteException;
 
@@ -17,5 +17,5 @@ public interface IBikeManager extends Remote, fr.uge.projet.bike.location.IBikeM
 
     String[] lookComment(UUID id) throws RemoteException;
 
-    IBike buyBike(IUser user, UUID idBike) throws RemoteException;
+    IBike buyBike(IUser user, UUID idBike, long amount) throws RemoteException;
 }

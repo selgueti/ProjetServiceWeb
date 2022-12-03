@@ -19,15 +19,20 @@ public class Bike extends UnicastRemoteObject implements IBike {
   private final IUser owner;
   private State state;
   private boolean available = true;
+  private long price;
 
   private final BlockingQueue<IUser> waitingList = new ArrayBlockingQueue<>(WAITING_LIST_LENGTH);
   private final HashMap<IUser, List<String>> commentsByUser = new HashMap<>();
 
-  public Bike(UUID id, IUser owner, State state) throws RemoteException {
+  public Bike(UUID id, IUser owner, State state, long price) throws RemoteException {
     super();
     Objects.requireNonNull(this.id = id);
     Objects.requireNonNull(this.owner = owner);
     Objects.requireNonNull(this.state = state);
+
+    if(price < 0) {
+      throw new IllegalArgumentException("Price must be positive");
+    }
   }
 
   @Override
@@ -106,6 +111,11 @@ public class Bike extends UnicastRemoteObject implements IBike {
   @Override
   public int hashCode() {
     return Objects.hash(super.hashCode(), id, owner, state, available, waitingList, commentsByUser);
+  }
+
+  @Override
+  public long getPrice() {
+    return price;
   }
 
   @Override

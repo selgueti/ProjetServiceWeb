@@ -1,9 +1,9 @@
 package fr.uge.projet.user;
 
-import fr.uge.projet.bike.location.IBike;
-import fr.uge.projet.bike.location.IBikeManager;
-
 import fr.uge.projet.bike.State;
+import fr.uge.projet.bike.lease.IBike;
+import fr.uge.projet.bike.lease.IBikeManager;
+
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
@@ -28,11 +28,11 @@ public class UserServer {
       IUser employee2 = userManager.registerUser("Kore.Lise", "qwerty");
 
       // RMI
-      IBikeManager bikeManager = (IBikeManager) Naming.lookup("rmi://localhost:1099/BikeService");
+      IBikeManager bikeManager = (IBikeManager) Naming.lookup("rmi://localhost:1099/BikeLeaseService");
 
       // 2 bike added
-      UUID idBike1 = bikeManager.addBike(student1, State.NEW);
-      UUID idBike2 = bikeManager.addBike(student2, State.NEW);
+      UUID idBike1 = bikeManager.addBike(student1, State.NEW, 123);
+      UUID idBike2 = bikeManager.addBike(student2, State.NEW, 342);
 
       // User look the catalog
       IBike[] bikes = bikeManager.getAll();
