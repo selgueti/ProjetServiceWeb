@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://bikeWebService.projet.uge.fr" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://bikeWebService.projet.uge.fr" xmlns:intf="http://bikeWebService.projet.uge.fr" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://bikeWebService.projet.uge.fr" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="getAllBikes">
+    <complexType/>
+   </element>
+   <element name="getAllBikesResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getAllBikesReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="buyBike">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:int"/>
+      <element name="currency" type="xsd:string"/>
+      <element name="amount" type="xsd:long"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="buyBikeResponse">
+    <complexType>
+     <sequence>
+      <element name="buyBikeReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getBike">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getBikeResponse">
+    <complexType>
+     <sequence>
+      <element name="getBikeReturn" type="impl:Bike"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="Bike">
+    <sequence>
+     <element name="available" type="xsd:boolean"/>
+     <element name="id" type="xsd:int"/>
+     <element name="mechanismType" nillable="true" type="xsd:string"/>
+     <element name="name" nillable="true" type="xsd:string"/>
+     <element name="price" type="xsd:long"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="getAllBikesResponse">
+
+      <wsdl:part element="impl:getAllBikesResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getBikeResponse">
+
+      <wsdl:part element="impl:getBikeResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAllBikesRequest">
+
+      <wsdl:part element="impl:getAllBikes" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="buyBikeResponse">
+
+      <wsdl:part element="impl:buyBikeResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getBikeRequest">
+
+      <wsdl:part element="impl:getBike" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="buyBikeRequest">
+
+      <wsdl:part element="impl:buyBike" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="BikeSellService">
+
+      <wsdl:operation name="getAllBikes">
+
+         <wsdl:input message="impl:getAllBikesRequest" name="getAllBikesRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getAllBikesResponse" name="getAllBikesResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="buyBike">
+
+         <wsdl:input message="impl:buyBikeRequest" name="buyBikeRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:buyBikeResponse" name="buyBikeResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getBike">
+
+         <wsdl:input message="impl:getBikeRequest" name="getBikeRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getBikeResponse" name="getBikeResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="BikeSellServiceSoapBinding" type="impl:BikeSellService">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="getAllBikes">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getAllBikesRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getAllBikesResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="buyBike">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="buyBikeRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="buyBikeResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getBike">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getBikeRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getBikeResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="BikeSellServiceService">
+
+      <wsdl:port binding="impl:BikeSellServiceSoapBinding" name="BikeSellService">
+
+         <wsdlsoap:address location="http://localhost:8080/GustaveBikeWebService/services/BikeSellService"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
