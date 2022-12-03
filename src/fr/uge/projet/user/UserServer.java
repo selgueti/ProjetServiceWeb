@@ -1,10 +1,8 @@
 package fr.uge.projet.user;
 
-import static fr.uge.projet.user.User.EMPLOYEE;
-import static fr.uge.projet.user.User.STUDENT;
-
 import fr.uge.projet.bike.location.IBike;
 import fr.uge.projet.bike.location.IBikeManager;
+
 import fr.uge.projet.bike.State;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
@@ -23,11 +21,11 @@ public class UserServer {
     try {
       // User DB
       IUserManager userManager = new UserManager();
-      IUser student1 = userManager.registerUser(STUDENT, "Doe", "John");
-      IUser student2 = userManager.registerUser(STUDENT, "Dae", "Jeanne");
-      IUser student3 = userManager.registerUser(STUDENT, "Dop", "Eric");
-      IUser employee1 = userManager.registerUser(EMPLOYEE, "Dupont", "Tom");
-      IUser employee2 = userManager.registerUser(EMPLOYEE, "Kore", "Lise");
+      IUser student1 = userManager.registerUser("Doe.John", "password");
+      IUser student2 = userManager.registerUser("Dae.Jeanne", "PASSWORD");
+      IUser student3 = userManager.registerUser( "Dop.Eric", "secretCode");
+      IUser employee1 = userManager.registerUser("Dupont.Tom", "12304");
+      IUser employee2 = userManager.registerUser("Kore.Lise", "qwerty");
 
       // RMI
       IBikeManager bikeManager = (IBikeManager) Naming.lookup("rmi://localhost:1099/BikeService");

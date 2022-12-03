@@ -1,6 +1,6 @@
 package fr.uge.projet.user;
 
-import fr.uge.projet.bike.location.IBike;
+import fr.uge.projet.bike.IBike;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
