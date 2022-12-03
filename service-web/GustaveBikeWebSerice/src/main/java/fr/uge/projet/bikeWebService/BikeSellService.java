@@ -39,7 +39,7 @@ public class BikeSellService {
 			changeService = new ChangeServiceServiceLocator().getChangeService();
 			bankService = new BankServiceServiceLocator().getBankService();
 			
-			long res = changeService.change("osef", "cedetruc", 10L);
+			long res = changeService.change("euro", "dollar", 10L);
 			System.out.println(res);
 			
 			BikeSellService bss = new BikeSellService();
@@ -48,7 +48,7 @@ public class BikeSellService {
 			
 			/*
 			
-			String codebase = "file:////C:/Users/Cedric/Documents/Ecole/UPEM/Projets/M2/WebRest/ProjetServiceWeb/out/production/ProjetServiceWeb/fr/uge/projet/bike/sell/";
+			String codebase = "file:////ProjetServiceWeb/out/production/ProjetServiceWeb/fr/uge/projet/bike/sell/";
 
 			System.setProperty("java.rmi.server.codebase", codebase);
 			
