@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Acceuil</title>
+    <link th:href="@{/styles/style.css}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <div class="container">
+
+        <ul class="nav nav-tabs">
+            <li role="presentation" ><a href="http://localhost:8081/list-bike">list-bike</a></li>
+            <li role="presentation"><a href="http://localhost:8081/list-bike">Bike</a></li>
+            <li role="presentation"><a href="http://localhost:8081/login">logout</a></li>
+        </ul>
+
+    </div>
+</head>
+<body>
+
+
+<div class="container">
+    <h3>***Getting Value in Thymeleaf***</h3>
+    Username <p th:text="${uname}"></p>
+    Password <p th:text="${pass}"></p>
+</div>
+</body>
+</html>
