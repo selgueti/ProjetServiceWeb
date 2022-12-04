@@ -72,8 +72,8 @@ case 13:
         }
         String amount_3id=  request.getParameter("amount20");
         long amount_3idTemp  = Long.parseLong(amount_3id);
-        boolean checkAvailablebalanceF13mtemp = sampleBankServiceProxyid.checkAvailablebalanceF(id_1idTemp,currency_2idTemp,amount_3idTemp);
-        String tempResultreturnp14 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(checkAvailablebalanceF13mtemp));
+        boolean checkAvailableBalance13mtemp = sampleBankServiceProxyid.checkAvailableBalance(id_1idTemp,currency_2idTemp,amount_3idTemp);
+        String tempResultreturnp14 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(checkAvailableBalance13mtemp));
         %>
         <%= tempResultreturnp14 %>
         <%
@@ -89,8 +89,8 @@ case 22:
         }
         String amount_6id=  request.getParameter("amount29");
         long amount_6idTemp  = Long.parseLong(amount_6id);
-        boolean checkAvailableBalance22mtemp = sampleBankServiceProxyid.checkAvailableBalance(id_4idTemp,currency_5idTemp,amount_6idTemp);
-        String tempResultreturnp23 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(checkAvailableBalance22mtemp));
+        boolean checkAvailablebalanceF22mtemp = sampleBankServiceProxyid.checkAvailablebalanceF(id_4idTemp,currency_5idTemp,amount_6idTemp);
+        String tempResultreturnp23 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(checkAvailablebalanceF22mtemp));
         %>
         <%= tempResultreturnp23 %>
         <%

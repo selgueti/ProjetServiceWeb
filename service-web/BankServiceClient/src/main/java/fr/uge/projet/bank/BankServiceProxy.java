@@ -44,16 +44,16 @@ public class BankServiceProxy implements fr.uge.projet.bank.BankService {
     return bankService;
   }
   
-  public boolean checkAvailablebalanceF(int id, java.lang.String currency, long amount) throws java.rmi.RemoteException{
-    if (bankService == null)
-      _initBankServiceProxy();
-    return bankService.checkAvailablebalanceF(id, currency, amount);
-  }
-  
   public boolean checkAvailableBalance(int id, java.lang.String currency, long amount) throws java.rmi.RemoteException{
     if (bankService == null)
       _initBankServiceProxy();
     return bankService.checkAvailableBalance(id, currency, amount);
+  }
+  
+  public boolean checkAvailablebalanceF(int id, java.lang.String currency, long amount) throws java.rmi.RemoteException{
+    if (bankService == null)
+      _initBankServiceProxy();
+    return bankService.checkAvailablebalanceF(id, currency, amount);
   }
   
   

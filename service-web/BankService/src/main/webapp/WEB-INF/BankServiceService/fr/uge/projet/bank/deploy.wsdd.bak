@@ -20,12 +20,12 @@
       <parameter name="className" value="fr.uge.projet.bank.BankServiceSoapBindingImpl"/>
       <parameter name="wsdlPortType" value="BankService"/>
       <parameter name="typeMappingVersion" value="1.2"/>
-      <operation name="checkAvailablebalanceF" qname="operNS:checkAvailablebalanceF" xmlns:operNS="http://bank.projet.uge.fr" returnQName="retNS:checkAvailablebalanceFReturn" xmlns:retNS="http://bank.projet.uge.fr" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+      <operation name="checkAvailableBalance" qname="operNS:checkAvailableBalance" xmlns:operNS="http://bank.projet.uge.fr" returnQName="retNS:checkAvailableBalanceReturn" xmlns:retNS="http://bank.projet.uge.fr" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
         <parameter qname="pns:id" xmlns:pns="http://bank.projet.uge.fr" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
         <parameter qname="pns:currency" xmlns:pns="http://bank.projet.uge.fr" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
         <parameter qname="pns:amount" xmlns:pns="http://bank.projet.uge.fr" type="tns:long" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
       </operation>
-      <operation name="checkAvailableBalance" qname="operNS:checkAvailableBalance" xmlns:operNS="http://bank.projet.uge.fr" returnQName="retNS:checkAvailableBalanceReturn" xmlns:retNS="http://bank.projet.uge.fr" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+      <operation name="checkAvailablebalanceF" qname="operNS:checkAvailablebalanceF" xmlns:operNS="http://bank.projet.uge.fr" returnQName="retNS:checkAvailablebalanceFReturn" xmlns:retNS="http://bank.projet.uge.fr" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
         <parameter qname="pns:id" xmlns:pns="http://bank.projet.uge.fr" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
         <parameter qname="pns:currency" xmlns:pns="http://bank.projet.uge.fr" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
         <parameter qname="pns:amount" xmlns:pns="http://bank.projet.uge.fr" type="tns:long" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>

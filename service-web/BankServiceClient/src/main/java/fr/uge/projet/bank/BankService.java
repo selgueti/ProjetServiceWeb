@@ -8,6 +8,6 @@
 package fr.uge.projet.bank;
 
 public interface BankService extends java.rmi.Remote {
-    public boolean checkAvailablebalanceF(int id, java.lang.String currency, long amount) throws java.rmi.RemoteException;
     public boolean checkAvailableBalance(int id, java.lang.String currency, long amount) throws java.rmi.RemoteException;
+    public boolean checkAvailablebalanceF(int id, java.lang.String currency, long amount) throws java.rmi.RemoteException;
 }

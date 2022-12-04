@@ -10,18 +10,19 @@
       <parameter name="className" value="fr.uge.projet.bikeWebService.BikeSellService"/>
       <parameter name="wsdlPortType" value="BikeSellService"/>
       <parameter name="typeMappingVersion" value="1.2"/>
-      <operation xmlns:operNS="http://bikeWebService.projet.uge.fr" xmlns:retNS="http://bikeWebService.projet.uge.fr" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getAllBikes" qname="operNS:getAllBikes" returnQName="retNS:getAllBikesReturn" returnType="rtns:string" soapAction="">
+      <operation xmlns:operNS="http://bikeWebService.projet.uge.fr" xmlns:retNS="http://bikeWebService.projet.uge.fr" xmlns:rtns="http://bikeWebService.projet.uge.fr" name="getBike" qname="operNS:getBike" returnQName="retNS:getBikeReturn" returnType="rtns:Bike" soapAction="">
+        <parameter xmlns:pns="http://bikeWebService.projet.uge.fr" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:id" type="tns:int"/>
+      </operation>
+      <operation xmlns:operNS="http://bikeWebService.projet.uge.fr" xmlns:retNS="http://bikeWebService.projet.uge.fr" xmlns:rtns="http://bikeWebService.projet.uge.fr" name="getAllBikes" qname="operNS:getAllBikes" returnQName="retNS:getAllBikesReturn" returnType="rtns:Bike" soapAction="">
       </operation>
       <operation xmlns:operNS="http://bikeWebService.projet.uge.fr" xmlns:retNS="http://bikeWebService.projet.uge.fr" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="buyBike" qname="operNS:buyBike" returnQName="retNS:buyBikeReturn" returnType="rtns:boolean" soapAction="">
         <parameter xmlns:pns="http://bikeWebService.projet.uge.fr" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:id" type="tns:int"/>
         <parameter xmlns:pns="http://bikeWebService.projet.uge.fr" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:currency" type="tns:string"/>
         <parameter xmlns:pns="http://bikeWebService.projet.uge.fr" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:amount" type="tns:long"/>
       </operation>
-      <operation xmlns:operNS="http://bikeWebService.projet.uge.fr" xmlns:retNS="http://bikeWebService.projet.uge.fr" xmlns:rtns="http://bikeWebService.projet.uge.fr" name="getBike" qname="operNS:getBike" returnQName="retNS:getBikeReturn" returnType="rtns:Bike" soapAction="">
-        <parameter xmlns:pns="http://bikeWebService.projet.uge.fr" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:id" type="tns:int"/>
-      </operation>
       <parameter name="allowedMethods" value="buyBike getBike getAllBikes"/>
 
       <typeMapping xmlns:ns="http://bikeWebService.projet.uge.fr" qname="ns:Bike" type="java:fr.uge.projet.bikeWebService.Bike" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <arrayMapping xmlns:ns="http://bikeWebService.projet.uge.fr" xmlns:cmp-ns="http://www.w3.org/2001/XMLSchema" qname="ns:ArrayOf_xsd_string" type="java:java.lang.String[]" innerType="cmp-ns:string" encodingStyle=""/>
   </service>
 </deployment>

@@ -7,8 +7,8 @@
   <ns1:parameter name="dotNetSoapEncFix" value="true"/>
   <ns1:parameter name="enableNamespacePrefixOptimization" value="false"/>
   <ns1:parameter name="sendXMLDeclaration" value="true"/>
-  <ns1:parameter name="sendXsiTypes" value="true"/>
   <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+  <ns1:parameter name="sendXsiTypes" value="true"/>
   <ns1:requestFlow>
    <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
     <ns1:parameter name="scope" value="session"/>
@@ -23,12 +23,12 @@
  <ns1:handler name="Authenticate" type="java:org.apache.axis.handlers.SimpleAuthenticationHandler"/>
  <ns1:handler name="LocalResponder" type="java:org.apache.axis.transport.local.LocalResponder"/>
  <ns1:service name="BankService" provider="java:RPC" style="wrapped" use="literal">
-  <ns2:operation name="checkAvailablebalanceF" qname="ns1:checkAvailablebalanceF" returnQName="ns1:checkAvailablebalanceFReturn" returnType="xsd:boolean" soapAction="" xmlns:ns1="http://bank.projet.uge.fr" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://xml.apache.org/axis/wsdd/">
+  <ns2:operation name="checkAvailableBalance" qname="ns1:checkAvailableBalance" returnQName="ns1:checkAvailableBalanceReturn" returnType="xsd:boolean" soapAction="" xmlns:ns1="http://bank.projet.uge.fr" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://xml.apache.org/axis/wsdd/">
    <ns2:parameter qname="ns1:id" type="xsd:int"/>
    <ns2:parameter qname="ns1:currency" type="xsd:string"/>
    <ns2:parameter qname="ns1:amount" type="xsd:long"/>
   </ns2:operation>
-  <ns1:operation name="checkAvailableBalance" qname="ns2:checkAvailableBalance" returnQName="ns2:checkAvailableBalanceReturn" returnType="xsd:boolean" soapAction="" xmlns:ns2="http://bank.projet.uge.fr" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ns1:operation name="checkAvailablebalanceF" qname="ns2:checkAvailablebalanceF" returnQName="ns2:checkAvailablebalanceFReturn" returnType="xsd:boolean" soapAction="" xmlns:ns2="http://bank.projet.uge.fr" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
    <ns1:parameter qname="ns2:id" type="xsd:int"/>
    <ns1:parameter qname="ns2:currency" type="xsd:string"/>
    <ns1:parameter qname="ns2:amount" type="xsd:long"/>

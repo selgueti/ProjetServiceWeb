@@ -4,22 +4,6 @@
 Built on Apr 22, 2006 (06:55:48 PDT)-->
  <wsdl:types>
   <schema elementFormDefault="qualified" targetNamespace="http://bank.projet.uge.fr" xmlns="http://www.w3.org/2001/XMLSchema">
-   <element name="checkAvailablebalanceF">
-    <complexType>
-     <sequence>
-      <element name="id" type="xsd:int"/>
-      <element name="currency" type="xsd:string"/>
-      <element name="amount" type="xsd:long"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="checkAvailablebalanceFResponse">
-    <complexType>
-     <sequence>
-      <element name="checkAvailablebalanceFReturn" type="xsd:boolean"/>
-     </sequence>
-    </complexType>
-   </element>
    <element name="checkAvailableBalance">
     <complexType>
      <sequence>
@@ -33,6 +17,22 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
     <complexType>
      <sequence>
       <element name="checkAvailableBalanceReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="checkAvailablebalanceF">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:int"/>
+      <element name="currency" type="xsd:string"/>
+      <element name="amount" type="xsd:long"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="checkAvailablebalanceFResponse">
+    <complexType>
+     <sequence>
+      <element name="checkAvailablebalanceFReturn" type="xsd:boolean"/>
      </sequence>
     </complexType>
    </element>
@@ -73,18 +73,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    <wsdl:portType name="BankService">
 
-      <wsdl:operation name="checkAvailablebalanceF">
-
-         <wsdl:input message="impl:checkAvailablebalanceFRequest" name="checkAvailablebalanceFRequest">
-
-       </wsdl:input>
-
-         <wsdl:output message="impl:checkAvailablebalanceFResponse" name="checkAvailablebalanceFResponse">
-
-       </wsdl:output>
-
-      </wsdl:operation>
-
       <wsdl:operation name="checkAvailableBalance">
 
          <wsdl:input message="impl:checkAvailableBalanceRequest" name="checkAvailableBalanceRequest">
@@ -97,29 +85,23 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
+      <wsdl:operation name="checkAvailablebalanceF">
+
+         <wsdl:input message="impl:checkAvailablebalanceFRequest" name="checkAvailablebalanceFRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:checkAvailablebalanceFResponse" name="checkAvailablebalanceFResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
    </wsdl:portType>
 
    <wsdl:binding name="BankServiceSoapBinding" type="impl:BankService">
 
       <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
-
-      <wsdl:operation name="checkAvailablebalanceF">
-
-         <wsdlsoap:operation soapAction=""/>
-
-         <wsdl:input name="checkAvailablebalanceFRequest">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:input>
-
-         <wsdl:output name="checkAvailablebalanceFResponse">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:output>
-
-      </wsdl:operation>
 
       <wsdl:operation name="checkAvailableBalance">
 
@@ -139,13 +121,31 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
+      <wsdl:operation name="checkAvailablebalanceF">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="checkAvailablebalanceFRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="checkAvailablebalanceFResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
    </wsdl:binding>
 
    <wsdl:service name="BankServiceService">
 
       <wsdl:port binding="impl:BankServiceSoapBinding" name="BankService">
 
-         <wsdlsoap:address location="http://localhost:8080/BankService/services/BankService"/>
+         <wsdlsoap:address location="http://localhost:8945/BankService/services/BankService"/>
 
       </wsdl:port>
 
