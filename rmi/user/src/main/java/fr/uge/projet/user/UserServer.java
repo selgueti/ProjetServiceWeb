@@ -1,8 +1,8 @@
 package fr.uge.projet.user;
 
 import fr.uge.projet.bike.State;
-import fr.uge.projet.bike.lease.IBike;
-import fr.uge.projet.bike.lease.IBikeManager;
+import fr.uge.projet.bike.IBike;
+import fr.uge.projet.bike.IBikeManager;
 
 import java.net.MalformedURLException;
 import java.rmi.Naming;

@@ -1,0 +1,11 @@
+plugins {
+    id 'java'
+}
+
+jar {
+    archiveBaseName = 'UserServer'
+    archiveVersion = '0.1.0'
+    manifest {
+        attributes('Main-Class': 'fr.uge.projet.user.UserServer')
+    }
+}

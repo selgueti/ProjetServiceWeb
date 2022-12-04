@@ -11,5 +11,5 @@ public interface IBike extends Remote{
 
   String[] getComment() throws RemoteException;
 
-  long getPrice();
+  long getPrice() throws RemoteException;
 }

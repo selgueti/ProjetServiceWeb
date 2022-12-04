@@ -114,7 +114,7 @@ public class Bike extends UnicastRemoteObject implements IBike {
   }
 
   @Override
-  public long getPrice() {
+  public long getPrice() throws RemoteException {
     return price;
   }
 
