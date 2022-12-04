@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>liste bikes</title>
+<!--    <link th:href="@{/styles/bootsrap.min.css}" rel="stylesheet">-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <div class="container">
+
+        <ul class="nav nav-tabs">
+            <li role="presentation"><a href="http://localhost:8081/list-bike">Home</a></li>
+            <li role="presentation"><a href="http://localhost:8081/list-bike">Bike</a></li>
+            <li role="presentation"><a href="http://localhost:8081/login">logout</a></li>
+        </ul>
+
+    </div>
+
+</head>
+<body>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-2">.col-md-2</div>
+
+        <div class="col-md-8">
+            .col-md-8
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>IsAvailable</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                <tr >
+                            <td class="success"></td>
+                            <td class="success"></td>
+                            <td class="success"></td>
+                            <td class="success"></td>
+                            <td class="success"></td>
+                        </tr>
+
+<!--                    <tr th:each= "bike : ${bikes}">-->
+<!--                        <td th:text="${bike.id}" class="success"></td>-->
+<!--                        <td th:text="${bike.name}" class="success"></td>-->
+<!--                        <td th:text="${bike.prenom}" class="success"></td>-->
+<!--                        <td th:text="${bike.mécouilles}" class="success"></td>-->
+<!--                        <td th:text="${bike.relislaligneprecedente}" class="success"></td>-->
+<!--                    </tr>-->
+                </tbody>
+
+            </table>
+        </div>
+
+        <div class="col-md-2">.col-md-2</div>
+    </div>
+</div>
+
+
+</body>
+</html>
