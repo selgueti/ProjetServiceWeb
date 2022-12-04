@@ -14,6 +14,17 @@ public class Application {
 			for(Bike bike: bikes) {
 				System.out.println("id : "+bike.getId()+" - name : "+bike.getName()+" - price : "+ bike.getPrice()+"€");
 			}
+			
+			if(bikes.length > 0) {
+				Bike bike = bikes[0];
+				if(bbs.buyBike(bike.getId(), "euro", bike.getPrice())) {
+					System.out.println("Achat réussi");
+				} else {
+					System.out.println("Echec de l'achat");
+				}
+			
+			}
+			
 		} catch(Exception e) {
 			System.out.println("Error " + e);
 		}
