@@ -4,6 +4,9 @@ import java.lang.reflect.Array;
 import java.rmi.Naming;
 import java.rmi.RMISecurityManager;
 import java.rmi.RemoteException;
+import java.util.Objects;
+
+import javax.xml.rpc.ServiceException;
 
 import fr.uge.projet.bank.BankService;
 import fr.uge.projet.bank.BankServiceServiceLocator;
@@ -15,35 +18,59 @@ import fr.uge.projet.change.ChangeServiceServiceLocator;
 public class BikeSellService {
 	private static ChangeService changeService;
 	private static BankService bankService;
-	
-	public String[] getAllBikes() throws RemoteException {
-		String[] a = {"aaa", "bbb", "ccc"};
-		return null;
+
+	public Bike[] getAllBikes() throws RemoteException {
+		String[] comments = {"Joli", "Bleu"};
+		Bike b1 =  new Bike(11, "Super vélo bleu", 1234, comments);
+		Bike b2 =  new Bike(12, "Super vélo rouge", 1135, comments);
+		Bike b3 =  new Bike(13, "Super vélo vert", 31432, comments);
+		Bike b4 =  new Bike(14, "Super vélo jaune", 39743, comments);
+		Bike[] bikes = {b1, b2, b3, b4};
+		return bikes;
 	}
-	
+
 	public Bike getBike(int id) throws RemoteException {
-		return new Bike(12, "Super vélo bleu", 1135);
+		String[] comments = {"Joli", "Bleu"};
+		return new Bike(12, "Super vélo bleu", 1135, comments);
 	}
-		
-	// Prendre la devise de l'achat
-	public boolean buyBike(int id, String currency, long amount) throws RemoteException {
-		changeService.change("euro", currency, amount);
-		boolean bankResponse = bankService.checkAvailableBalance(id, "euro", amount);
-		return bankResponse;
+
+
+	private long getAmountInCurrency(String currencySrc, long amount) throws ServiceException, RemoteException {
+		if ("euro".equals(currencySrc))
+			return amount;
+
+		if (null == changeService)
+			changeService = new ChangeServiceServiceLocator().getChangeService();
+
+		return changeService.change("euro", currencySrc, amount);
 	}
-	
+
+	private boolean getBankResponse(int id, long amount) throws ServiceException, RemoteException {
+		if (null == bankService)
+			bankService = new BankServiceServiceLocator().getBankService();
+
+		return bankService.checkAvailableBalance(id, "euro", amount);
+	}
+
+	public boolean buyBike(int id, String currency, long amount) throws RemoteException, ServiceException {
+		Objects.requireNonNull(currency);
+
+		long a = getAmountInCurrency(currency, amount);
+
+		return getBankResponse(id, a);
+	}
+
 	@SuppressWarnings("deprecation")
 	public static void main(String[] args) {
 		try {
-			System.out.println("Service launched");
 			changeService = new ChangeServiceServiceLocator().getChangeService();
 			bankService = new BankServiceServiceLocator().getBankService();
-			
+
 			long res = changeService.change("euro", "dollar", 10L);
 			System.out.println(res);
-			
+
 			BikeSellService bss = new BikeSellService();
-			
+
 			System.out.println(bss.buyBike(0, "dol", 10));
 			
 			/*
@@ -66,8 +93,7 @@ public class BikeSellService {
 				System.out.println(bike);
 			}
 			*/
-			System.out.println("Service ended");
-			
+
 		} catch(Exception e) {
 			System.out.println("Error: "+e);
 		}
