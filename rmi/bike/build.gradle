@@ -1,0 +1,11 @@
+plugins {
+    id 'java'
+}
+
+jar {
+    archiveBaseName = 'BikeServer'
+    archiveVersion = '0.1.0'
+    manifest {
+        attributes('Main-Class': 'fr.uge.projet.bike.BikeServer')
+    }
+}
