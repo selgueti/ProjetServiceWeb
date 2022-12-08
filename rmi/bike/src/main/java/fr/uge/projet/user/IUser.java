@@ -9,4 +9,5 @@ public interface IUser extends Remote {
 
   void notifyAvailability(IBike bike) throws RemoteException;
 
+  String asString() throws RemoteException;
 }

@@ -14,4 +14,9 @@ public class EiffelBikeCorp extends UnicastRemoteObject implements IUser {
   public void notifyAvailability(IBike bike) throws RemoteException {
     throw new AssertionError("EiffelBikeCorp shouldn't register on waiting list of any bike");
   }
+
+  @Override
+  public String asString() throws RemoteException {
+    return "User{ EiffelBikeCorp }";
+  }
 }

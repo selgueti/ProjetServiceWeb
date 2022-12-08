@@ -31,6 +31,11 @@ public class User extends UnicastRemoteObject implements IUser {
   @Override
   public void notifyAvailability(IBike bike) throws RemoteException {
     Objects.requireNonNull(bike);
-    System.out.println("New location by " + this);
+    System.out.println("New location by " + asString());
+  }
+
+  @Override
+  public String asString() throws RemoteException {
+    return pseudo;
   }
 }

@@ -19,38 +19,58 @@ public class UserServer {
   public static void main(String[] args) throws InterruptedException {
 
     try {
+      // RMI
+      IBikeManager bikeManager = (IBikeManager) Naming.lookup("rmi://localhost:1099/BikeLeaseService");
+
       // User DB
       IUserManager userManager = new UserManager();
       IUser student1 = userManager.registerUser("Doe.John", "password");
       IUser student2 = userManager.registerUser("Dae.Jeanne", "PASSWORD");
       IUser student3 = userManager.registerUser( "Dop.Eric", "secretCode");
       IUser employee1 = userManager.registerUser("Dupont.Tom", "12304");
-      IUser employee2 = userManager.registerUser("Kore.Lise", "qwerty");
-
-      // RMI
-      IBikeManager bikeManager = (IBikeManager) Naming.lookup("rmi://localhost:1099/BikeLeaseService");
-
+      IUser employee2 = userManager.registerUser("Dupont.Pierre", "43210");
+      
+      
+      // Test connexion
+      IUser user1connected = userManager.connectionUser("Doe.John", "password");
+      if(user1connected == null) {
+        System.out.println("Doe.John connexion failed, wrong password");
+      } else {
+        System.out.println("Doe.John: connected");
+      }
+      
       // 2 bike added
       UUID idBike1 = bikeManager.addBike(student1, State.NEW, 123);
       UUID idBike2 = bikeManager.addBike(student2, State.NEW, 342);
 
       // User look the catalog
       IBike[] bikes = bikeManager.getAll();
-      logger.info("User look the catalog  =>> bike[0] = " + bikes[0]);
 
+      System.out.println(">>> User look the catalog:");
+      Arrays.stream(bikes).forEach(b -> {
+        try {
+          System.out.println(b.asString());
+        } catch (RemoteException e) {
+          throw new RuntimeException(e);
+        }
+      });
+
+      
       bikeManager.registerOnWaitingList(employee1, idBike1);
       bikeManager.registerOnWaitingList(employee2, idBike1);
       bikeManager.registerOnWaitingList(student3, idBike1);
       bikeManager.registerOnWaitingList(student3, idBike2);
-      logger.info("Some registration to list...");
+      
+      
+      System.out.println(">>> Some registration to list...");
       Thread.sleep(5000);
-      bikeManager.returnToService(employee1, idBike1, State.DAMAGED, "I fell off with the bike");
-      logger.info("employee1 return the bike");
+      bikeManager.returnToService(employee1, idBike1, State.NEW, "Bon état");
+      System.out.println("employee1 return the bike");
 
       Thread.sleep(5000);
       bikeManager.returnToService(employee2, idBike1, State.DAMAGED,
-          "The bike is more that broken");
-      logger.info("employee2 return the bike");
+          "Pneu creuvé");
+      System.out.println("employee2 return the bike");
 
       // User look comment of the bike1
       var comment = bikeManager.lookComment(idBike1);
