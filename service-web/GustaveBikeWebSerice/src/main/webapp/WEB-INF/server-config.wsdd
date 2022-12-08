@@ -33,16 +33,19 @@
   <ns1:parameter name="className" value="org.apache.axis.Version"/>
  </ns1:service>
  <ns1:service name="BikeSellService" provider="java:RPC" style="wrapped" use="literal">
-  <ns2:operation name="getBike" qname="ns1:getBike" returnQName="ns1:getBikeReturn" returnType="ns1:Bike" soapAction="" xmlns:ns1="http://bikeWebService.projet.uge.fr" xmlns:ns2="http://xml.apache.org/axis/wsdd/">
-   <ns2:parameter qname="ns1:id" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
-  </ns2:operation>
-  <ns1:operation name="getAllBikes" qname="ns2:getAllBikes" returnQName="ns2:getAllBikesReturn" returnType="ns2:Bike" soapAction="" xmlns:ns2="http://bikeWebService.projet.uge.fr"/>
-  <ns1:operation name="buyBike" qname="ns3:buyBike" returnQName="ns3:buyBikeReturn" returnType="xsd:boolean" soapAction="" xmlns:ns3="http://bikeWebService.projet.uge.fr" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-   <ns1:parameter qname="ns3:id" type="xsd:int"/>
-   <ns1:parameter qname="ns3:currency" type="xsd:string"/>
-   <ns1:parameter qname="ns3:amount" type="xsd:long"/>
+  <ns2:operation name="getAllBikes" qname="ns1:getAllBikes" returnQName="ns1:getAllBikesReturn" returnType="ns1:Bike" soapAction="" xmlns:ns1="http://bikeWebService.projet.uge.fr" xmlns:ns2="http://xml.apache.org/axis/wsdd/"/>
+  <ns1:operation name="getBike" qname="ns2:getBike" returnQName="ns2:getBikeReturn" returnType="ns2:Bike" soapAction="" xmlns:ns2="http://bikeWebService.projet.uge.fr">
+   <ns1:parameter qname="ns2:id" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
   </ns1:operation>
-  <ns1:parameter name="allowedMethods" value="buyBike getBike getAllBikes"/>
+  <ns1:operation name="addBike" qname="ns3:addBike" returnQName="ns3:addBikeReturn" returnType="xsd:boolean" soapAction="" xmlns:ns3="http://bikeWebService.projet.uge.fr" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns3:bike" type="ns3:Bike"/>
+  </ns1:operation>
+  <ns1:operation name="buyBike" qname="ns4:buyBike" returnQName="ns4:buyBikeReturn" returnType="xsd:boolean" soapAction="" xmlns:ns4="http://bikeWebService.projet.uge.fr" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns4:id" type="xsd:int"/>
+   <ns1:parameter qname="ns4:currency" type="xsd:string"/>
+   <ns1:parameter qname="ns4:amount" type="xsd:long"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="addBike buyBike getBike getAllBikes"/>
   <ns1:parameter name="typeMappingVersion" value="1.2"/>
   <ns1:parameter name="wsdlPortType" value="BikeSellService"/>
   <ns1:parameter name="className" value="fr.uge.projet.bikeWebService.BikeSellService"/>
@@ -50,8 +53,8 @@
   <ns1:parameter name="schemaQualified" value="http://bikeWebService.projet.uge.fr"/>
   <ns1:parameter name="wsdlTargetNamespace" value="http://bikeWebService.projet.uge.fr"/>
   <ns1:parameter name="wsdlServiceElement" value="BikeSellServiceService"/>
-  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns4:Bike" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:fr.uge.projet.bikeWebService.Bike" xmlns:ns4="http://bikeWebService.projet.uge.fr"/>
-  <ns1:arrayMapping innerType="xsd:string" languageSpecificType="java:java.lang.String[]" qname="ns5:ArrayOf_xsd_string" xmlns:ns5="http://bikeWebService.projet.uge.fr" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns5:Bike" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:fr.uge.projet.bikeWebService.Bike" xmlns:ns5="http://bikeWebService.projet.uge.fr"/>
+  <ns1:arrayMapping innerType="xsd:string" languageSpecificType="java:java.lang.String[]" qname="ns6:ArrayOf_xsd_string" xmlns:ns6="http://bikeWebService.projet.uge.fr" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
  </ns1:service>
  <ns1:transport name="http">
   <ns1:requestFlow>

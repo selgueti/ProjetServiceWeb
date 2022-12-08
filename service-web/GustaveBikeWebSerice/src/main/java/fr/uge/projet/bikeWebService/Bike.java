@@ -81,5 +81,10 @@ public class Bike implements Serializer {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	@Override
+	public String toString() {
+		return "id: " + id + "   name : " + name + "  price : " + price;
+	}
 
 }

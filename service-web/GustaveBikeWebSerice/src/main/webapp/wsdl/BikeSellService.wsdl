@@ -4,17 +4,13 @@
 Built on Apr 22, 2006 (06:55:48 PDT)-->
  <wsdl:types>
   <schema elementFormDefault="qualified" targetNamespace="http://bikeWebService.projet.uge.fr" xmlns="http://www.w3.org/2001/XMLSchema">
-   <element name="getBike">
-    <complexType>
-     <sequence>
-      <element name="id" type="xsd:int"/>
-     </sequence>
-    </complexType>
+   <element name="getAllBikes">
+    <complexType/>
    </element>
-   <element name="getBikeResponse">
+   <element name="getAllBikesResponse">
     <complexType>
      <sequence>
-      <element name="getBikeReturn" type="impl:Bike"/>
+      <element maxOccurs="unbounded" name="getAllBikesReturn" type="impl:Bike"/>
      </sequence>
     </complexType>
    </element>
@@ -33,13 +29,31 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
      <element name="price" type="xsd:long"/>
     </sequence>
    </complexType>
-   <element name="getAllBikes">
-    <complexType/>
-   </element>
-   <element name="getAllBikesResponse">
+   <element name="getBike">
     <complexType>
      <sequence>
-      <element maxOccurs="unbounded" name="getAllBikesReturn" type="impl:Bike"/>
+      <element name="id" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getBikeResponse">
+    <complexType>
+     <sequence>
+      <element name="getBikeReturn" type="impl:Bike"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addBike">
+    <complexType>
+     <sequence>
+      <element name="bike" type="impl:Bike"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addBikeResponse">
+    <complexType>
+     <sequence>
+      <element name="addBikeReturn" type="xsd:boolean"/>
      </sequence>
     </complexType>
    </element>
@@ -94,9 +108,25 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
+   <wsdl:message name="addBikeResponse">
+
+      <wsdl:part element="impl:addBikeResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
    <wsdl:message name="getBikeRequest">
 
       <wsdl:part element="impl:getBike" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addBikeRequest">
+
+      <wsdl:part element="impl:addBike" name="parameters">
 
       </wsdl:part>
 
@@ -112,6 +142,18 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    <wsdl:portType name="BikeSellService">
 
+      <wsdl:operation name="getAllBikes">
+
+         <wsdl:input message="impl:getAllBikesRequest" name="getAllBikesRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getAllBikesResponse" name="getAllBikesResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
       <wsdl:operation name="getBike">
 
          <wsdl:input message="impl:getBikeRequest" name="getBikeRequest">
@@ -124,13 +166,13 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
-      <wsdl:operation name="getAllBikes">
+      <wsdl:operation name="addBike">
 
-         <wsdl:input message="impl:getAllBikesRequest" name="getAllBikesRequest">
+         <wsdl:input message="impl:addBikeRequest" name="addBikeRequest">
 
        </wsdl:input>
 
-         <wsdl:output message="impl:getAllBikesResponse" name="getAllBikesResponse">
+         <wsdl:output message="impl:addBikeResponse" name="addBikeResponse">
 
        </wsdl:output>
 
@@ -154,6 +196,24 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
 
+      <wsdl:operation name="getAllBikes">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getAllBikesRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getAllBikesResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
       <wsdl:operation name="getBike">
 
          <wsdlsoap:operation soapAction=""/>
@@ -172,17 +232,17 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
-      <wsdl:operation name="getAllBikes">
+      <wsdl:operation name="addBike">
 
          <wsdlsoap:operation soapAction=""/>
 
-         <wsdl:input name="getAllBikesRequest">
+         <wsdl:input name="addBikeRequest">
 
             <wsdlsoap:body use="literal"/>
 
          </wsdl:input>
 
-         <wsdl:output name="getAllBikesResponse">
+         <wsdl:output name="addBikeResponse">
 
             <wsdlsoap:body use="literal"/>
 
@@ -214,7 +274,7 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       <wsdl:port binding="impl:BikeSellServiceSoapBinding" name="BikeSellService">
 
-         <wsdlsoap:address location="http://localhost:8080/GustaveBikeWebSerice/services/BikeSellService"/>
+         <wsdlsoap:address location="http://localhost:8945/GustaveBikeWebSerice/services/BikeSellService"/>
 
       </wsdl:port>
 

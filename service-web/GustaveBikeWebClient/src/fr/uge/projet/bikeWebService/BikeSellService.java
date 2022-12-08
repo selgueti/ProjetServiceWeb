@@ -8,7 +8,8 @@
 package fr.uge.projet.bikeWebService;
 
 public interface BikeSellService extends java.rmi.Remote {
-    public fr.uge.projet.bikeWebService.Bike getBike(int id) throws java.rmi.RemoteException;
     public fr.uge.projet.bikeWebService.Bike[] getAllBikes() throws java.rmi.RemoteException;
+    public fr.uge.projet.bikeWebService.Bike getBike(int id) throws java.rmi.RemoteException;
+    public boolean addBike(fr.uge.projet.bikeWebService.Bike bike) throws java.rmi.RemoteException;
     public boolean buyBike(int id, java.lang.String currency, long amount) throws java.rmi.RemoteException;
 }

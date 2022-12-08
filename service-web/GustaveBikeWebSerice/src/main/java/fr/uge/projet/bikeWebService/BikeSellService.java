@@ -4,7 +4,14 @@ import java.lang.reflect.Array;
 import java.rmi.Naming;
 import java.rmi.RMISecurityManager;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import javax.xml.rpc.ServiceException;
 
@@ -16,24 +23,41 @@ import fr.uge.projet.change.ChangeService;
 import fr.uge.projet.change.ChangeServiceServiceLocator;
 
 public class BikeSellService {
+	private static final Map<Integer, Bike> bikes = new HashMap<>();
 	private static ChangeService changeService;
 	private static BankService bankService;
-
+	
+	public boolean addBike(Bike bike) {
+		return null != bikes.putIfAbsent(bike.id, bike);
+	}
+	
+	private static boolean isAvailable(Bike bike) {
+		return bike.isAvailable();
+	}
+	
 	public Bike[] getAllBikes() throws RemoteException {
-		String[] comments = {"Joli", "Bleu"};
-		Bike b1 =  new Bike(11, "Super vélo bleu", 1234, comments);
-		Bike b2 =  new Bike(12, "Super vélo rouge", 1135, comments);
-		Bike b3 =  new Bike(13, "Super vélo vert", 31432, comments);
-		Bike b4 =  new Bike(14, "Super vélo jaune", 39743, comments);
-		Bike[] bikes = {b1, b2, b3, b4};
-		return bikes;
+		List<Bike> tmp = bikes.values().stream().collect(Collectors.<Bike>toList());
+		
+		List<Bike> results = new ArrayList<>();
+		
+		// Unavailable bikes filter
+		for (Bike b : tmp) {
+			if (b.available) {
+				results.add(b);
+			}
+		}
+		
+		Bike[] res = new Bike[results.size()];
+		for(int i = 0; i < results.size(); i++) {
+			res[i] = results.get(i);
+		}
+		
+		return res;
 	}
 
 	public Bike getBike(int id) throws RemoteException {
-		String[] comments = {"Joli", "Bleu"};
-		return new Bike(12, "Super vélo bleu", 1135, comments);
+		return bikes.get(id);
 	}
-
 
 	private long getAmountInCurrency(String currencySrc, long amount) throws ServiceException, RemoteException {
 		if ("euro".equals(currencySrc))
@@ -54,10 +78,29 @@ public class BikeSellService {
 
 	public boolean buyBike(int id, String currency, long amount) throws RemoteException, ServiceException {
 		Objects.requireNonNull(currency);
-
+		
+		Bike b = bikes.get(id);
+		
+		// Unknown bike
+		if (null == b)
+			return false;
+		
+		// Change currency service
 		long a = getAmountInCurrency(currency, amount);
-
-		return getBankResponse(id, a);
+		
+		// Bank validation
+		boolean bankResponse =  getBankResponse(id, a);
+		
+		// Check price
+		if (a != b.price) 
+			return false;
+		
+		if (bankResponse) {
+			bikes.remove(id);
+			return true;
+		}
+		
+		return false;
 	}
 
 	@SuppressWarnings("deprecation")
@@ -65,7 +108,7 @@ public class BikeSellService {
 		try {
 			changeService = new ChangeServiceServiceLocator().getChangeService();
 			bankService = new BankServiceServiceLocator().getBankService();
-
+			
 			long res = changeService.change("euro", "dollar", 10L);
 			System.out.println(res);
 

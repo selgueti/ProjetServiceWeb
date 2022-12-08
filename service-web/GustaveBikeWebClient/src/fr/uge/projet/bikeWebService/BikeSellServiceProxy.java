@@ -62,5 +62,11 @@ public class BikeSellServiceProxy implements fr.uge.projet.bikeWebService.BikeSe
     return bikeSellService.buyBike(id, currency, amount);
   }
   
+  public boolean addBike(fr.uge.projet.bikeWebService.Bike bike) throws java.rmi.RemoteException{
+    if (bikeSellService == null)
+      _initBikeSellServiceProxy();
+    return bikeSellService.addBike(bike);
+  }
+  
   
 }
