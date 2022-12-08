@@ -46,7 +46,7 @@ public class UserServer {
       // User look the catalog
       IBike[] bikes = bikeManager.getAll();
 
-      System.out.println("User look the catalog:");
+      System.out.println(">>> User look the catalog:");
       Arrays.stream(bikes).forEach(b -> {
         try {
           System.out.println(b.asString());
@@ -62,7 +62,7 @@ public class UserServer {
       bikeManager.registerOnWaitingList(student3, idBike2);
       
       
-      System.out.println("Some registration to list...");
+      System.out.println(">>> Some registration to list...");
       Thread.sleep(5000);
       bikeManager.returnToService(employee1, idBike1, State.NEW, "Bon état");
       System.out.println("employee1 return the bike");
