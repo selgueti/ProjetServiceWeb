@@ -43,6 +43,7 @@ public class BikeManager extends UnicastRemoteObject implements IBikeManager {
       }
       var bike = bikeById.get(idBike);
       var res = bike.registerOnWaitingList(user);
+      System.out.println(user.asString() + " registered on list of bike with id: " + idBike);
       if (bike.isAvailable()) {
         bike.tryToNotifyClient();
       }
@@ -64,6 +65,7 @@ public class BikeManager extends UnicastRemoteObject implements IBikeManager {
       var bike = bikeById.get(idBike);
       bike.returnToService(user, state, comment);
       bike.tryToNotifyClient();
+      System.out.println(user.asString() + " returned bike with id: " + idBike);
     }
   }
 

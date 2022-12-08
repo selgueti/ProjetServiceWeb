@@ -126,4 +126,13 @@ public class Bike extends UnicastRemoteObject implements IBike {
         ", available=" + available +
         " }";
   }
+
+  @Override
+  public String asString() throws RemoteException {
+    return "Bike{" +
+            " owner=" + owner.asString() +
+            ", state=" + state +
+            ", available=" + available +
+            " }";
+  }
 }
